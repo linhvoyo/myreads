@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getAll, update } from '../BooksAPI';
-
+import { getAll } from '../BooksAPI';
+import './Shelves.css';
 import DisplayBooks from '../components/DisplayBooks';
 import { SHELVES } from '../constants';
 
@@ -21,25 +21,15 @@ export default class Layout extends React.Component {
 
   render() {
     return <div>
-      <h1 className='list-books-title'>My Reads</h1>
-      {/* {
-        Object.keys(SHELVES).map(shelf => <DisplayBooks
-          books={this.state.books}
-          key={shelf}
-          onShelfChange={this.shelfChangeHandler}
-          shelfFilter={shelf}
-          shelfTitle={SHELVES[shelf]}></DisplayBooks>)
-      } */}
-
+      <h1>My Reads</h1>
       {
-        Object.keys(SHELVES).map(shelf => <div className='list-books-content bookshelf'>
+        Object.keys(SHELVES).map(shelf => <div className='bookshelf'>
           <span className='bookshelf-title'>{SHELVES[shelf]}</span>
           <DisplayBooks
             books={this.state.books}
             key={shelf}
             onShelfChange={this.shelfChangeHandler}
             shelfFilter={shelf}
-          // shelfTitle={SHELVES[shelf]}></DisplayBooks>
           ></DisplayBooks>
         </div>)
       }
