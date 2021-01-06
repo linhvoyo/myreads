@@ -6,9 +6,8 @@
 .book-title,
 .book-authors {
   font-size: 0.8em;
-}
-.book-title {
-  margin-top: -20px;
+  line-height: 1.2;
+  margin-top: -10px;
 }
 .book-authors {
   color: #999;
@@ -20,12 +19,16 @@ img, .empty-img {
   object-fit: fill;
   box-shadow: 2px 2px 6px #777;
 }
+.empty-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-.book-shelf-changer {
+.Shelves .book-shelf-changer {
   position: relative;
   right: -120px;
   bottom: 40px;
-  opacity: 0.7;
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -35,10 +38,19 @@ img, .empty-img {
   background-position: center;
   background-size: 40px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition: transform .3s ease;
 }
-.book-shelf-changer select {
+.Shelves .book-shelf-changer:hover {
+  transform: scale(1.1);
+}
+.Shelves .book-shelf-changer select {
   width: 100%;
   height: 100%;
   opacity: 0;
   cursor: pointer;
+}
+
+.Search .book-shelf-changer {
+  position: relative;
+  bottom: 30px;
 }

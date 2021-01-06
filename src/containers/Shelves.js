@@ -20,17 +20,18 @@ export default class Layout extends React.Component {
   };
 
   render() {
-    return <div>
-      <h1>My Reads</h1>
-      {Object.keys(SHELVES).map(shelf => <div className='bookshelf'>
-        <span className='bookshelf-title'>{SHELVES[shelf]}</span>
-        <DisplayBooks
-          books={this.state.books}
-          key={shelf}
-          onShelfChange={this.shelfChangeHandler}
-          shelfFilter={shelf}
-        ></DisplayBooks>
-      </div>)}
+    return <div className="Shelves">
+      <h1 className='title'>My Reads</h1>
+      {Object.keys(SHELVES).map(shelf =>
+        <div className='bookshelf' key={shelf}>
+          <span className='bookshelf-title'>{SHELVES[shelf]}</span>
+          <DisplayBooks
+            books={this.state.books}
+            key={shelf}
+            onShelfChange={this.shelfChangeHandler}
+            shelfFilter={shelf}
+          ></DisplayBooks>
+        </div>)}
       <div className='open-search'>
         <Link to='/search'>Search</Link>
       </div>

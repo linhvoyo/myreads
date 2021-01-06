@@ -1,5 +1,6 @@
 import React from 'react';
-import { search } from '../BooksAPI';
+import { Link } from 'react-router-dom';
+import { getAll, search } from '../BooksAPI';
 
 import SearchBar from './SearchBar';
 import DisplayBooks from '../components/DisplayBooks';
@@ -8,8 +9,21 @@ import DisplayBooks from '../components/DisplayBooks';
 export default class Search extends React.Component {
   state = {
     books: [],
+    myReads: [],
     loading: false,
     error: '',
+  }
+
+  componentDidMount() {
+    getAll().then(r => this.setState({ myReads: r }))
+  }
+
+  matchSearchBooksToShelf = () => {
+    const myReadsHash = {};
+    this.state.myReads.forEach((book) => myReadsHash[book.id] = book)
+    return this.state.books
+      .map((book) => book.id in myReadsHash ? { ...book, shelf: myReadsHash[book.id].shelf }
+        : book)
   }
 
   searchSubmitHandler = (event, query) => {
@@ -24,11 +38,17 @@ export default class Search extends React.Component {
     };
   };
 
+
   render() {
-    return <div>
+    const showBooks = this.state.books.length && this.state.myReads.length ? this.matchSearchBooksToShelf()
+      : this.state.books;
+
+    return <div className="Search">
       <SearchBar onSearch={this.searchSubmitHandler}></SearchBar>
+
+      <Link to='/'>Back to Shelves</Link><br></br>
       {this.state.error && <span>No books found</span>}
-      <DisplayBooks books={this.state.books}></DisplayBooks>
+      <DisplayBooks books={showBooks}></DisplayBooks>
     </div>
   }
 }

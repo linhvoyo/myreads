@@ -11,7 +11,7 @@ function book(props) {
   const options = { ...SHELVES, none: 'None' }
 
   const shelfChangeHandler = async (event, book) => {
-    const shelf = Object.keys(SHELVES).find(opt => SHELVES[opt] === event.target.value);
+    const shelf = Object.keys(options).find(opt => options[opt] === event.target.value);
     await update(book, shelf).then(r => { console.log(r) })
     if (props.history.location.pathname === '/') onShelfChange();
   };
