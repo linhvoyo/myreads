@@ -16,21 +16,24 @@ function book(props) {
     if (props.history.location.pathname === '/') onShelfChange();
   };
 
-  return !book ? null
-    : <div className='book'>
-      <img src={book.imageLinks.smallThumbnail} alt={book.title} />
+  if (!book) return null;
 
-      <div className='book-shelf-changer'>
-        <select
-          defaultValue={book.shelf ? options[book.shelf] : 'None'}
-          onChange={(event) => shelfChangeHandler(event, book)} >
-          <option disabled>Move To...</option>
-          {Object.keys(options).map(opt => <option key={opt}>{options[opt]}</option>)}
-        </select>
-      </div>
-      <p className='book-title'>{book.title}</p>
-      {book.authors && book.authors.map((author => <p className='book-authors' key={author}>{author}</p>))}
-    </div>
+  const modifyShelfSelect = <div className='book-shelf-changer'>
+    <select
+      defaultValue={book.shelf ? options[book.shelf] : 'None'}
+      onChange={(event) => shelfChangeHandler(event, book)} >
+      <option disabled>Move To...</option>
+      {Object.keys(options).map(opt => <option key={opt}>{options[opt]}</option>)}
+    </select>
+  </div>
+
+  return <div className='book'>
+    {book.imageLinks ? <img src={book.imageLinks.smallThumbnail} alt={book.title} />
+      : <div className='empty-img'>N/A</div>}
+    {modifyShelfSelect}
+    {book.title && <p className='book-title'>{book.title}</p>}
+    {book.authors && book.authors.map((author => <p className='book-authors' key={author}>{author}</p>))}
+  </div>
 };
 
 export default withRouter(book);

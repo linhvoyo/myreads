@@ -1,21 +1,24 @@
 .book {
   width: 140px;
+  height: 350px;
+  margin: 10px 20px;
 }
 .book-title,
 .book-authors {
   font-size: 0.8em;
 }
 .book-title {
-  margin-top: 10px;
+  margin-top: -20px;
 }
 .book-authors {
   color: #999;
 }
 
-img {
+img, .empty-img {
   width: 150px;
   height: 200px;
-  object-fit: scale-down;
+  object-fit: fill;
+  box-shadow: 2px 2px 6px #777;
 }
 
 .book-shelf-changer {
