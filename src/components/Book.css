@@ -38,7 +38,7 @@ img, .empty-img {
   background-position: center;
   background-size: 40px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  transition: transform .3s ease;
+  transition: transform 0.3s ease;
 }
 .Shelves .book-shelf-changer:hover {
   transform: scale(1.1);
