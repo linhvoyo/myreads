@@ -6,10 +6,7 @@ import DisplayBooks from '../components/DisplayBooks';
 import { SHELVES } from '../constants';
 
 export default class Layout extends React.Component {
-  state = {
-    books: [],
-    error: ''
-  }
+  state = { books: [] };
 
   componentDidMount() {
     getAll().then(r => this.setState({ books: r }))

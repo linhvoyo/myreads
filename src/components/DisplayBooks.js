@@ -3,7 +3,7 @@ import Book from './Book';
 import './DisplayBooks.css';
 
 const displayBooks = (props) => {
-  const { books, onShelfChange, shelfFilter } = props;
+  const { books, shelfFilter, onShelfChange } = props;
   const showBooks = shelfFilter ? books.filter(b => b.shelf === shelfFilter) : books;
 
   if (!showBooks) return null;

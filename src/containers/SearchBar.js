@@ -12,11 +12,13 @@ export default class SearchBar extends React.Component {
   }
 
   render() {
-    return <input
+    return <div className='SearchBar'>
+      <input
         className='search-books'
         type='text'
         value={this.state.query}
         placeholder='Search Books'
         onChange={this.searchHandler} />
+    </div>
   }
 }
