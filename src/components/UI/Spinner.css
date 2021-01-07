@@ -1,6 +1,6 @@
 .Spinner {
-  margin-left: 43%;
-  margin-top: 20%;
+  display: flex;
+  justify-content: center;
 }
 
 .loader {
